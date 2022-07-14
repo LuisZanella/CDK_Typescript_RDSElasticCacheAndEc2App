@@ -1,0 +1,7 @@
+## Prerequisites
+ - Node js
+ - CDK (node package) npm install -g aws-cdk
+ - AWS CLI
+
+ ## Setup
+ 1. cdk init app --language typescript
