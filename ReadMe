@@ -1,3 +1,6 @@
+### If you have any trouble by installing it or configure the server follow the tutorial: (This readme is on building)
+MIT License - https://github.com/aws-samples/amazon-elasticache-demo-using-aws-cdk
+
 ## Prerequisites
  - Node js
  - CDK (node package) npm install -g aws-cdk
@@ -5,3 +8,20 @@
 
  ## Setup
  1. cdk init app --language typescript
+ 
+ 
+ ##Once you deploy it, configure the server app
+1.- You log in as ssm-user. However, the web server's user data script is run for ec2-user.
+
+Switch to ec2-user using the following command.
+- sudo su - ec2-user
+You should land in the ec2-user home directory /home/ec2-user, which should contain the elasticache-demo-cdk-application sub-folder. This is the same repository that you cloned on your local machine. It contains the sample data that is inserted into the MySQL database as well as the web application. You can find the sample dataset and the web application in the sample-dataset and web-app subfolders, respectively.
+
+Let's navigate to the web application subfolder from the home directory and see the content:
+
+ls -l 
+cd amazon-elasticache-demo-using-aws-cdk
+ls -l 
+cd web-app 
+ls -l 
+
