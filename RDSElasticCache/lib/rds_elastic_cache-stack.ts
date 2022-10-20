@@ -6,7 +6,7 @@ import { aws_elasticache as elasticache, aws_iam as iam } from 'aws-cdk-lib';
 import { readFileSync } from 'fs';
 
 export class RdsElasticCacheStack extends Stack {
-  APP_PORT = process.env.APP_PORT
+  APP_PORT = 8008
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);  
 
@@ -109,10 +109,10 @@ export class RdsElasticCacheStack extends Stack {
     })
 
     // Generate CloudFormation Outputs
-    new CfnOutput(this,id="secretName",{ value: String(rdsInstance.secret?.secretName)})
-    new CfnOutput(this,id="mysqlEndpoint-DeleteMe", { value: rdsInstance.dbInstanceEndpointAddress})
-    new CfnOutput(this,id="redisEndpoint-DeleteMe", { value: redisCluster.attrRedisEndpointAddress})
-    new CfnOutput(this,id="webserverPublicIp-DeleteMe", { value: instance.instancePublicIp})
-    new CfnOutput(this,id="webserverPublicUrl-DeleteMe", { value: 'http://' + instance.instancePublicDnsName + ':' + String(this.APP_PORT)})
+    new CfnOutput(this,id="secret_name",{ value: String(rdsInstance.secret?.secretName)})
+    new CfnOutput(this,id="mysql_endpoint", { value: rdsInstance.dbInstanceEndpointAddress})
+    new CfnOutput(this,id="redis_endpoint", { value: redisCluster.attrRedisEndpointAddress})
+    new CfnOutput(this,id="webserver_public_ip", { value: instance.instancePublicIp})
+    new CfnOutput(this,id="webserver_public_url", { value: 'http://' + instance.instancePublicDnsName + ':' + String(this.APP_PORT)})
   }
 }
